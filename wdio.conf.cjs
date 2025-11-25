@@ -1,6 +1,6 @@
 const path = require('path');
 
-export const config = {
+exports.config = {
     //
     // ====================
     // Runner Configuration
@@ -25,7 +25,7 @@ export const config = {
     //
     specs: [
         // ToDo: define location for spec files here
-        ';/test/specs/**/*.js'
+        './test/specs/**/*.js'
     ],
     // Patterns to exclude.
     exclude: [
@@ -56,10 +56,11 @@ export const config = {
     capabilities: [{
         // capabilities for local Appium web tests on an Android Emulator
         'appium:platformName': 'Android',
-        'appium:deviceName': 'Pixel 4',
-        'appium:platformVersion': '12.0',
+    'appium:deviceName': process.env.DEVICE_NAME || 'Pixel 4',
+    // Note: platformVersion removed so Appium can pick any connected device/emulator
         'appium:automationName': 'UiAutomator2',
-        'appium:app': path.join(process.cwd(), 'app\android\ApiDemos-debug.apk')
+    // use path.join with separate segments to avoid accidental escape sequences
+    'appium:app': path.join(process.cwd(), 'app', 'android', 'ApiDemos-debug.apk')
     }],
 
     //
@@ -69,7 +70,13 @@ export const config = {
     // Define all options that are relevant for the WebdriverIO instance here
     //
     // Level of logging verbosity: trace | debug | info | warn | error | silent
+    // general log level
     logLevel: 'info',
+    // suppress very verbose logs from webdriver and the appium service
+    logLevels: {
+        webdriver: 'error',
+        '@wdio/appium-service': 'error'
+    },
     //
     // Set specific log levels per logger
     // loggers:
@@ -110,6 +117,12 @@ export const config = {
     // your test setup with almost no effort. Unlike plugins, they don't add new
     // commands. Instead, they hook themselves up into the test process.
     services: ['appium'],
+
+    // If Appium is installed globally and you want to use the global `appium` command
+    // instead of a local package, provide the command here.
+    appium: {
+        command: 'appium'
+    },
 
     // Framework you want to run your specs with.
     // The following are supported: Mocha, Jasmine, and Cucumber
