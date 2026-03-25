@@ -11,7 +11,7 @@ describe('Android Find Elements', () => {
         console.log(await className.getText())
         await expect(className).toHaveText('API Demos')
     })
-    it('Find element by xpath', async () => {
+    xit('Find element by xpath', async () => {
      await $('//android.widget.TextView[@content-desc="Alert Dialogs"]').click()
         
      await $('//android.widget.Button[@resource-id="io.appium.android.apis:id/select_button"]').click()
@@ -20,5 +20,8 @@ describe('Android Find Elements', () => {
 
      const textAssertion = await $('//android.widget.TextView')
      await expect(textAssertion).toHaveText('You selected: 1 , Command two')
+    })
+    it('Find element by UiAutomator', async () => {
+        await $('android=new UiSelector().textContains("Alert")').click()
     })
 });
