@@ -24,4 +24,22 @@ describe('Android Find Elements', () => {
     it('Find element by UiAutomator', async () => {
         await $('android=new UiSelector().textContains("Alert")').click()
     })
+
+    it.only('Find multiple elements', async () => {
+      const expectedList=[
+        'API Demos', "Access'ibility",
+        'Accessibility','Animation',
+        'App','Content','Graphics',
+        'Media','NFC','OS',
+        'Preference','Text','Views'
+      ]
+
+      const actualList=[]
+
+      const textList =await $$('android.widget.TextView')
+      for(const element of textList){
+        actualList.push(await element.getText())      
+      }
+      await expect(actualList).toEqual(expectedList)
+    })
 });
