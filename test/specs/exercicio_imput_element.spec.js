@@ -10,7 +10,8 @@ describe('Android Find Elements', () => {
     await countryInput.click()
     await countryInput.setValue('Brazil') // funciona (setvalue limpa o campo e depois digita o valor desejado)
    // await countryInput.addValue('Brazil') // addValue nao apaga, apenas concatena ao texto ja existente no campo
-    const country = await $('//android.widget.AutoCompleteTextView[@text="Brazil"]')
+    const country = await $('//android.widget.AutoCompleteTextView[@text="Brazil"]')// do meu jeito
      await expect(country).toHaveText('Brazil');
     });
 })      
+
