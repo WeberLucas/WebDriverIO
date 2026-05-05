@@ -1,1 +1,4 @@
 node_modules
+
+# Relatório HTML gerado pelo Allure (use npm run allure:generate)
+allure-report
