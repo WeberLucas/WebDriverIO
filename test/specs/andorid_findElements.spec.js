@@ -42,7 +42,7 @@ describe('Android Find Elements', () => {
     }
     await expect(actualList).toEqual(expectedList)
   })
-  it.only('Vertical srolling', async () => {
+  it('Vertical srolling', async () => {
     await $('~App').click()
     await $('~Activity').click()
 
@@ -52,8 +52,15 @@ describe('Android Find Elements', () => {
     await $('android=new UiScrollable(new UiSelector().scrollable(true)).scrollTextIntoView("Secure Surfaces"))').click()
 
     await expect($('~Secure Surfaces')).toExist()
+  })
+  it.only('Horizontal srolling', async () => {
+    await driver.startActivity("io.appium.android.apis", "io.appium.android.apis.view.Gallery1");
+
+    //scrolla horizontalmente
+    await $('android=new UiScrollable(new UiSelector().scrollable(true)).setAsHorizontalList().scrollForward()')
+    await $('android=new UiScrollable(new UiSelector().scrollable(true)).setAsHorizontalList().scrollBackward()')
 
 
-
+    await driver.pause(30000)
   })
 });
