@@ -1,15 +1,11 @@
+import { ApiDemosScreen } from '../../screens/api_demos.screen.js';
+
+const api_demos_screen = new ApiDemosScreen();
+
 describe('Android Native - Views > Buttons', () => {
-    it('should open Views, open Buttons and tap Normal button', async () => {
-        await driver.startActivity(
-            'io.appium.android.apis',
-            'io.appium.android.apis.ApiDemos'
-        );
-
-        await $('//*[@text="Views"]').click();
-        await $('//*[@text="Buttons"]').click();
-        await $('//*[@text="Normal"]').click();
-
-        await expect($('//*[@text="Views/Buttons"]')).toExist();
-        await expect($('//*[@text="Normal"]')).toExist();
+    it('deve abrir Views, Buttons e tocar em Normal', async () => {
+        await api_demos_screen.navegar_views_buttons_normal();
+        await expect(api_demos_screen.titulo_views_buttons).toExist();
+        await expect(api_demos_screen.opcao_normal).toExist();
     });
 });

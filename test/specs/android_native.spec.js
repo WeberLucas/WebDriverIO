@@ -1,27 +1,17 @@
+import { AlertDialogScreen } from '../../screens/alert_dialog.screen.js';
+import { abrir_alert_dialogs } from '../../helper/app.helper.js';
+import { clicar_quando_visivel } from '../../helper/wait.helper.js';
+
+const alert_dialog_screen = new AlertDialogScreen();
+
 describe('Android Native Feature Tests', () => {
-    it('Acess an Activity directly', async () => {
-       await driver.startActivity("io.appium.android.apis", "io.appium.android.apis.app.AlertDialogSamples");
-        await driver.pause(30000)
-
-       await expect($('//*[@text="App/Alert Dialogs"]')).toExist();
+    it('deve abrir activity Alert Dialogs diretamente', async () => {
+        await abrir_alert_dialogs();
+        await expect(alert_dialog_screen.titulo_tela).toExist();
     });
-    it.only('Working with dialog boxes', async ()=>{
-      //entra no app android já na tela desejada(não funciona ios)
-      await driver.startActivity("io.appium.android.apis", "io.appium.android.apis.app.AlertDialogSamples");
-      await driver.pause(30000)  
-   
-      await $('//*[@resource-id="io.appium.android.apis:id/two_buttons"]').click();
-        //comando que aceita o alerta sozinho
-        //await driver.acceptAlert();//caso queria negar ~e sõ usar o alert.dissiAlert
-      
 
-        //pegar texto do alerta
-      console.log('ALERT TEXT -->',await driver.getAlertText())
-
-        //click ok no botão
-      await $('//*[@resource-id="android:id/button1"]').click()
-
-        //verificar que a caixa de alerta não está mais visível 
-        await expect($('//*[@resource-id="android::id/alertTitle"]')).not.toExist();
-   })
+    it('deve interagir com dialog de dois botões', async () => {
+        await alert_dialog_screen.abrir_dialog_dois_botoes_e_confirmar();
+        await expect(alert_dialog_screen.titulo_alerta).not.toExist();
+    });
 });

@@ -1,4 +1,8 @@
 node_modules
 
-# Relatório HTML gerado pelo Allure (use npm run allure:generate)
+# Resultados e relatório Allure (gerados localmente)
+allure-results
 allure-report
+
+# APK local (baixar ApiDemos-debug.apk para app/android/)
+app/android/*.apk
