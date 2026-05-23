@@ -1,126 +1,105 @@
-📱 WebdriverIO + Appium — Android Automation
+📱 WebdriverIO + Appium — Android (API Demos)
 <div align="center">
 
-Automação mobile utilizando <strong>WebdriverIO v9</strong>, <strong>Appium 2</strong> e <strong>Allure Report</strong> 🚀
+Projeto de automação mobile com <strong>WebdriverIO v9</strong>, <strong>Appium 2</strong> e <strong>Allure Report</strong> 🚀
 
-
-
-
-
-
-
-
-</div>
-✨ Sobre o Projeto
-
-Projeto de automação mobile desenvolvido com:
-
-⚡ WebdriverIO v9
-📱 Appium 2
-🤖 Android API Demos
-📊 Allure Reports
-🧩 Arquitetura baseada em Screen Objects
-📂 Estrutura do Projeto
-.
-├── data/             # Massa de teste, constantes e activities
-├── helpers/          # Helpers e utilitários
-├── screen/           # Screen Objects
-├── test/specs/       # Casos de teste
-├── app/android/      # APK ApiDemos-debug.apk
-└── README.md
+<br> <img src="https://img.shields.io/badge/WebdriverIO-v9-orange?style=for-the-badge&logo=webdriverio" /> <img src="https://img.shields.io/badge/Appium-2-662d91?style=for-the-badge&logo=appium" /> <img src="https://img.shields.io/badge/Android-Automation-3DDC84?style=for-the-badge&logo=android" /> <img src="https://img.shields.io/badge/Allure-Report-blue?style=for-the-badge" /> </div>
+📂 Estrutura (padrão do trabalho)
+data/            # massa de teste, constantes, activities
+helpers/         # utilitários (app, waits)
+screen/          # Screen Objects
+test/specs/      # testes
+app/android/     # APK ApiDemos-debug.apk
 ⚙️ Pré-requisitos
 
-Antes de executar o projeto, tenha instalado:
+Antes de executar o projeto, você precisa ter instalado:
 
-Node.js 18+
-Android SDK
-Emulador Android ou dispositivo físico
-Appium 2
-
-Executar Appium:
-
-npx appium
-
-ou instalado globalmente:
-
-appium
+✅ Node.js 18+
+✅ Android SDK
+✅ Emulador Android ou device USB
+✅ Appium 2 (npx appium ou instalado globalmente)
 📦 APK
 
-Coloque o APK abaixo no diretório:
+Coloque o ApiDemos-debug.apk em:
 
 app/android/ApiDemos-debug.apk
 
-APK utilizado:
+Origem usual:
 
-ApiDemos-debug.apk
-
-Origem oficial:
-
+Repositório oficial:
 https://github.com/appium/android-apidemos
+Ou material do curso.
 🚀 Instalação
 npm install
-▶️ Executando os Testes
+▶️ Executar testes
 
-Com o emulador/dispositivo conectado:
+Com o emulador/device ligado e Appium rodando na porta 4723:
 
 npm test
-📱 Definir Device Opcionalmente
 
-Windows:
+O projeto sobe automaticamente via @wdio/appium-service
 
+📱 Variável opcional para nome do device
+Windows
 set DEVICE_NAME=Pixel_4_API_30
 npm test
-
-Linux/MacOS:
-
+Linux / Mac
 DEVICE_NAME=Pixel_4_API_30 npm test
-📊 Gerando Relatório Allure
+📊 Allure
+
+Gerar relatório:
+
 npm run allure:report
-🧠 Padrões do Projeto
-Cursor Rules
+🧠 Cursor
+✅ Rule
+
 Variáveis devem seguir o padrão:
+
 xxx_xxx
 
-Exemplo:
+Exemplos:
 
 login_button
+home_screen
 user_name
 password_input
-Cursor Skill
+✅ Skill
 
 Localização:
 
 .cursor/skills/wdio-mobile-automation/
 
-Contém padrões para:
+Contém padrões mobile para:
 
 data
 helpers
 screen
 test
-🏗️ Arquitetura Utilizada
+🧩 Arquitetura Utilizada
 
-O projeto utiliza o padrão:
+O projeto utiliza:
 
 ✅ Screen Object Pattern
 ✅ Separação de responsabilidades
-✅ Reutilização de componentes
 ✅ Organização escalável
-🧪 Tecnologias Utilizadas
+✅ Reutilização de componentes
+✅ Estrutura limpa para manutenção
+🛠️ Tecnologias Utilizadas
 Tecnologia	Finalidade
 WebdriverIO	Framework de automação
 Appium	Automação mobile
 Allure	Relatórios
-Node.js	Runtime
+Node.js	Runtime JavaScript
 Android SDK	Ambiente Android
 💡 Objetivo
 
 Este projeto tem como foco:
 
-Boas práticas em automação mobile
-Estrutura profissional para testes
-Facilidade de manutenção
-Escalabilidade
+📱 Automação mobile Android
+🧪 Boas práticas em testes automatizados
+🚀 Estrutura profissional utilizando WebdriverIO + Appium
+📊 Relatórios organizados com Allure
+🧩 Facilidade de manutenção e escalabilidade
 <div align="center">
-🚀 Automação Mobile com WebdriverIO + Appium
+🚀 Mobile Automation • WebdriverIO • Appium • Android
 </div>
