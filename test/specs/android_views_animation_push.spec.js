@@ -1,4 +1,4 @@
-import { ApiDemosScreen } from '../../screens/api_demos.screen.js';
+import { ApiDemosScreen } from '../../screen/api_demos.screen.js';
 
 const api_demos_screen = new ApiDemosScreen();
 

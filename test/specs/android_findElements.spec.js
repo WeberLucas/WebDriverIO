@@ -1,5 +1,5 @@
-import { abrir_gallery } from '../../helper/app.helper.js';
-import { clicar_quando_visivel } from '../../helper/wait.helper.js';
+import { abrir_gallery } from '../../helpers/app.helper.js';
+import { clicar_quando_visivel } from '../../helpers/wait.helper.js';
 
 describe('Android Find Elements', () => {
     it('deve encontrar elemento por accessibility id', async () => {

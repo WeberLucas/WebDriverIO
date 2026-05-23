@@ -1,5 +1,5 @@
-import { abrir_alert_dialogs } from '../helper/app.helper.js';
-import { clicar_quando_visivel } from '../helper/wait.helper.js';
+import { abrir_alert_dialogs } from '../helpers/app.helper.js';
+import { clicar_quando_visivel } from '../helpers/wait.helper.js';
 
 export class AlertDialogScreen {
     get titulo_tela() {

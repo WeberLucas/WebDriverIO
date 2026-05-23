@@ -2,9 +2,10 @@
 name: wdio-mobile-automation
 description: >-
   Especialista em automação mobile com WebdriverIO v9, Appium 2, Android/iOS e
-  Allure. Usa Screen Object Model em screens/, specs em test/ e utilitários em
-  helper/. Aplica waits explícitos, accessibility id e código estável. Use ao
-  criar ou editar specs, screens, helpers, seletores ou testes Appium mobile.
+  Allure. Usa Screen Object Model em screen/, specs em test/, utilitários em
+  helpers/ e massa de dados em data/. Aplica waits explícitos, accessibility id
+  e código estável. Use ao criar ou editar specs, screen, helpers, data,
+  seletores ou testes Appium mobile.
 ---
 
 # Automação mobile — WebdriverIO + Appium
@@ -19,23 +20,25 @@ Você é especialista em automação mobile.
 - Android / iOS
 - Allure Reporter
 
-## Arquitetura e pastas
+## Arquitetura e pastas (padrão do trabalho)
 
 ```
-helper/     # waits, scroll, gestures, dados de teste, funções reutilizáveis
-screens/    # Screen Objects (uma screen por tela/fluxo)
+data/       # massa de teste, constantes, credenciais fake, activities
+helpers/    # waits, scroll, gestures, startActivity, funções reutilizáveis
+screen/     # Screen Objects (uma screen por tela/fluxo)
 test/       # specs de teste (ex.: test/specs/**/*.js)
 ```
 
-- **screens/** — encapsula seletores e ações da UI (equivalente a Page Objects).
+- **data/** — valores de entrada, packages, activities; sem lógica de UI.
+- **screen/** — seletores e ações da UI (equivalente a Page Objects).
+- **helpers/** — lógica transversal; não duplicar o que pertence a uma screen.
 - **test/** — apenas orquestração: preparação, ação, validação.
-- **helper/** — lógica transversal; não duplicar o que pertence a uma screen.
 
 ## Convenções de código
 
 - Variáveis no formato `xxx_xxx` (snake_case).
 - Métodos pequenos, um propósito claro.
-- Reutilizar métodos de screens e helpers.
+- Reutilizar screen, helpers e data.
 - Código limpo, legível e manutenível (padrão enterprise).
 
 ## Boas práticas
@@ -70,17 +73,17 @@ describe('Nome do fluxo', () => {
 });
 ```
 
-## Screen Objects (`screens/`)
+## Screen Objects (`screen/`)
 
 - Uma classe (ou módulo) por tela ou fluxo coeso.
 - **Getters** para elementos: `get btn_login() { return $('~login'); }`
-- **Métodos async** para ações: `async tap_login() { await this.btn_login.waitForDisplayed(); await this.btn_login.click(); }`
+- **Métodos async** para ações com wait antes de interagir.
 - Specs **não** devem conter seletores crus repetidos — delegar à screen.
 
 Exemplo (JavaScript):
 
 ```javascript
-// screens/login.screen.js
+// screen/login.screen.js
 export class LoginScreen {
   get input_email() {
     return $('~email');
@@ -99,28 +102,35 @@ export class LoginScreen {
 }
 ```
 
-## Helpers (`helper/`)
+## Helpers (`helpers/`)
 
-- Waits customizados, scroll horizontal/vertical, `startActivity`, dados fake.
-- Funções puras ou utilitários sem acoplar a uma tela específica.
-- Nomear arquivos por responsabilidade: `scroll.helper.js`, `wait.helper.js`.
+- Waits customizados, scroll, `startActivity`, integrações com driver.
+- Funções sem acoplar a uma tela específica.
+- Nomear por responsabilidade: `scroll.helper.js`, `wait.helper.js`.
+
+## Data (`data/`)
+
+- Constantes, JSON de massa, usuários de teste, textos esperados.
+- Exemplo: `api_demos.data.js` com package, activities e `pais_brazil`.
+- Specs importam data; screens recebem valores por parâmetro quando possível.
 
 ## Specs (`test/`)
 
-- Importar screens e helpers; manter o `it` enxuto.
+- Importar de `data/`, `screen/` e `helpers/`; manter o `it` enxuto.
 - Um conceito principal por `it` quando possível.
 - Remover `it.only` / `xit` antes de commit (salvo pedido explícito).
 
 Exemplo:
 
 ```javascript
-import { LoginScreen } from '../../screens/login.screen.js';
+import { DADOS_LOGIN } from '../../data/login.data.js';
+import { LoginScreen } from '../../screen/login.screen.js';
 
 const login_screen = new LoginScreen();
 
 describe('Login', () => {
   it('deve exibir home após login válido', async () => {
-    await login_screen.fazer_login('user@test.com', 'senha123');
+    await login_screen.fazer_login(DADOS_LOGIN.email, DADOS_LOGIN.senha);
     await expect($('~home')).toBeDisplayed();
   });
 });
@@ -143,4 +153,5 @@ describe('Login', () => {
 - `driver.pause()`
 - Seletores copiados do Inspector sem revisão
 - Lógica de negócio pesada dentro do spec
-- Duplicar seletores entre specs e screens
+- Duplicar seletores entre specs e screen
+- Colocar massa de teste dentro de screen ou helper (usar `data/`)

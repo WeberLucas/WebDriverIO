@@ -1,5 +1,5 @@
-import { abrir_api_demos } from '../helper/app.helper.js';
-import { clicar_quando_visivel } from '../helper/wait.helper.js';
+import { abrir_api_demos } from '../helpers/app.helper.js';
+import { clicar_quando_visivel } from '../helpers/wait.helper.js';
 
 export class ApiDemosScreen {
     get menu_views() {

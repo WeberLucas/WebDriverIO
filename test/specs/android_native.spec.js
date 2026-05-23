@@ -1,6 +1,5 @@
-import { AlertDialogScreen } from '../../screens/alert_dialog.screen.js';
-import { abrir_alert_dialogs } from '../../helper/app.helper.js';
-import { clicar_quando_visivel } from '../../helper/wait.helper.js';
+import { AlertDialogScreen } from '../../screen/alert_dialog.screen.js';
+import { abrir_alert_dialogs } from '../../helpers/app.helper.js';
 
 const alert_dialog_screen = new AlertDialogScreen();
 

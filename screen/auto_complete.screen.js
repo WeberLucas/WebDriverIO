@@ -1,4 +1,4 @@
-import { clicar_quando_visivel, preencher_quando_visivel } from '../helper/wait.helper.js';
+import { clicar_quando_visivel, preencher_quando_visivel } from '../helpers/wait.helper.js';
 
 export class AutoCompleteScreen {
     get menu_views() {
