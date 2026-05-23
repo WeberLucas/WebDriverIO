@@ -1,4 +1,4 @@
-import { abrir_api_demos } from '../helpers/app.helper.js';
+import { abrir_api_demos } from '../helpers/navegation.helper.js';
 import { clicar_quando_visivel } from '../helpers/wait.helper.js';
 
 export class ApiDemosScreen {
@@ -25,6 +25,7 @@ export class ApiDemosScreen {
     get texto_push() {
         return $('//*[@text="Push"]');
     }
+    
 
     async abrir_home() {
         await abrir_api_demos();

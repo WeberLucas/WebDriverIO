@@ -15,3 +15,8 @@ export async function abrir_alert_dialogs() {
 export async function abrir_gallery() {
     await abrir_activity(API_DEMOS_PACKAGE, API_DEMOS_ACTIVITIES.gallery);
 }
+export async function abrir_date_widgets() {
+    await abrir_activity(API_DEMOS_PACKAGE, API_DEMOS_ACTIVITIES.date_widgets);
+}
+
+

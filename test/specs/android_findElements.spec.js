@@ -1,4 +1,4 @@
-import { abrir_gallery } from '../../helpers/app.helper.js';
+import { abrir_gallery } from '../../helpers/navegation.helper.js';
 import { clicar_quando_visivel } from '../../helpers/wait.helper.js';
 
 describe('Android Find Elements', () => {
