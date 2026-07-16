@@ -1,5 +1,5 @@
-import { DADOS_AUTO_COMPLETE } from '../../data/api_demos.data.js';
-import { AutoCompleteScreen } from '../../screen/auto_complete.screen.js';
+import { DADOS_AUTO_COMPLETE } from '../../../data/api_demos.data.js';
+import { AutoCompleteScreen } from '../../../screen/auto_complete.screen.js';
 
 const auto_complete_screen = new AutoCompleteScreen();
 

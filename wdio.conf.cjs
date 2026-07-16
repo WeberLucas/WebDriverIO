@@ -60,7 +60,7 @@ exports.config = {
     // Note: platformVersion removed so Appium can pick any connected device/emulator
         'appium:automationName': 'UiAutomator2',
     // use path.join with separate segments to avoid accidental escape sequences
-    'appium:app': path.join(process.cwd(), 'app', 'android', 'ApiDemos-debug.apk')
+    'appium:app': path.join(process.cwd(), 'app', 'android', 'ColorNote+Notepad.apk')
     }],
 
     //

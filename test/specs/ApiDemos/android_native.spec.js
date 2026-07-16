@@ -1,5 +1,5 @@
-import { AlertDialogScreen } from '../../screen/alert_dialog.screen.js';
-import { abrir_alert_dialogs } from '../../helpers/app.helper.js';
+import { AlertDialogScreen } from '../../../screen/alert_dialog.screen.js';
+import { abrir_alert_dialogs } from '../../../helpers/navegation.helper.js';
 
 const alert_dialog_screen = new AlertDialogScreen();
 

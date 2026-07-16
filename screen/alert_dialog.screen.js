@@ -1,4 +1,4 @@
-import { abrir_alert_dialogs } from '../helpers/app.helper.js';
+import { abrir_alert_dialogs } from '../helpers/navegation.helper.js';
 import { clicar_quando_visivel } from '../helpers/wait.helper.js';
 
 export class AlertDialogScreen {
