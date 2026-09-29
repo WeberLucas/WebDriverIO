@@ -60,7 +60,14 @@ exports.config = {
     // Note: platformVersion removed so Appium can pick any connected device/emulator
         'appium:automationName': 'UiAutomator2',
     // use path.join with separate segments to avoid accidental escape sequences
-    'appium:app': path.join(process.cwd(), 'app', 'android', 'ColorNote+Notepad.apk')
+    'appium:app': path.join(process.cwd(), 'app', 'android', 'ColorNoteNotepad.apk'),
+    'appium:appPackage': 'com.socialnmobile.dictapps.notepad.color.note',
+    'appium:appActivity': 'com.socialnmobile.colornote.activity.Main',
+    // Main pode demorar: permissões / onboarding aparecem antes da activity launcher
+    'appium:appWaitActivity': '*',
+    'appium:appWaitDuration': 60000,
+    'appium:adbExecTimeout': 120000,
+    'appium:autoGrantPermissions': true
     }],
 
     //
